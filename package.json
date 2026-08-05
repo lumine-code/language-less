@@ -9,6 +9,11 @@
     "mixin"
   ],
   "license": "MIT",
+  "files": [
+    "grammars",
+    "settings",
+    "spec"
+  ],
   "engines": {
     "lumine": "^1.0.0",
     "node": "*"
