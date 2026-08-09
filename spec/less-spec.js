@@ -2,11 +2,11 @@ describe("Less grammar", () => {
   let grammar = null;
 
   beforeEach(() => {
-    waitsForPromise(() => atom.packages.activatePackage("language-css"));
+    waitsForPromise(() => lumine.packages.activatePackage("language-css"));
 
-    waitsForPromise(() => atom.packages.activatePackage("language-less"));
+    waitsForPromise(() => lumine.packages.activatePackage("language-less"));
 
-    runs(() => (grammar = atom.grammars.grammarForScopeName("source.css.less")));
+    runs(() => (grammar = lumine.grammars.grammarForScopeName("source.css.less")));
   });
 
   it("parses the grammar", () => {

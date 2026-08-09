@@ -7,11 +7,11 @@ const path = require("path");
 
 describe("Less sample fixtures", () => {
   beforeEach(async () => {
-    await atom.packages.activatePackage("language-less");
+    await lumine.packages.activatePackage("language-less");
   });
 
   it("tokenizes sample.less", async () => {
-    const editor = await atom.workspace.open(path.join(__dirname, "fixtures", "sample.less"));
+    const editor = await lumine.workspace.open(path.join(__dirname, "fixtures", "sample.less"));
 
     expect(editor.getGrammar().scopeName).toBe("source.css.less");
 
