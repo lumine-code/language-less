@@ -1,12 +1,12 @@
 describe("Less grammar", () => {
   let grammar = null;
 
-  beforeEach(() => {
-    waitsForPromise(() => lumine.packages.activatePackage("language-css"));
+  beforeEach(async () => {
+    await lumine.packages.activatePackage("language-css");
 
-    waitsForPromise(() => lumine.packages.activatePackage("language-less"));
+    await lumine.packages.activatePackage("language-less");
 
-    runs(() => (grammar = lumine.grammars.grammarForScopeName("source.css.less")));
+    grammar = lumine.grammars.grammarForScopeName("source.css.less");
   });
 
   it("parses the grammar", () => {
