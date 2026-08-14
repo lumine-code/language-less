@@ -9,7 +9,7 @@ Less language support.
 
 ## Installation
 
-To install `language-less` search for _language-less_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/language-less`.
+To install `language-less` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-less`.
 
 ## Contributing
 
