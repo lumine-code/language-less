@@ -49,7 +49,7 @@ async function main() {
     }
   }
 
-  const configPath = path.join(__dirname, "settings", "language-less.json");
+  const configPath = path.join(__dirname, "settings", "main.json");
   const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
   config[".source.css.less .meta.property-value"].autocomplete.symbols.builtins.suggestions =
     suggestions;
