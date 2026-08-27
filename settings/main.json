@@ -1,12 +1,5 @@
 {
   ".source.css.less": {
-    "language": {
-      "commentStart": "// ",
-      "commentDelimiters": {
-        "line": "//",
-        "block": ["/*", "*/"]
-      }
-    },
     "autocomplete": {
       "extraWordCharacters": "-",
       "symbols": {
@@ -18,6 +11,13 @@
           "selector": ".attribute-name.id, .attribute-name.class",
           "typePriority": 1
         }
+      }
+    },
+    "editor": {
+      "commentStart": "// ",
+      "commentDelimiters": {
+        "line": "//",
+        "block": ["/*", "*/"]
       }
     }
   },
