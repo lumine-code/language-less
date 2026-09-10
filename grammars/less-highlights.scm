@@ -2,7 +2,8 @@
 ; 02988c765d30adb0476657b5d220e8dfde1c07d3 (MIT).
 
 (comment) @comment.block.less
-(js_comment) @comment.line.double-slash.less
+((js_comment) @comment.line.double-slash.less
+  (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
 (tag_name) @entity.name.tag.less
 (nesting_selector) @entity.name.tag.reference.less
@@ -94,17 +95,12 @@
 (mixin_statement
   (function_name) @entity.name.function.mixin.less)
 
-(mixin_statement
-  (arguments
-    (variable) @variable.parameter.less))
-
 (mixin_definition
   (class_name) @entity.name.function.mixin.less)
 
-(mixin_definition
-  (parameters
-    (parameter
-      (variable) @variable.parameter.less)))
+((variable) @variable.parameter.less
+  (#is? test.typeAt "parent parameter")
+  (#is? test.typeAt "parent.parent parameters"))
 
 ((plain_value) @string.unquoted.less
   (#not-match? @string.unquoted.less "^--"))
@@ -113,8 +109,8 @@
 (identifier) @variable.other.less
 (variable) @variable.other.less
 
-(arguments
-  (variable) @variable.parameter.less)
+((variable) @variable.parameter.less
+  (#is? test.childOfType arguments))
 
 ; Preserve the scope used by the package's value completions without making
 ; the property name part of the value.
