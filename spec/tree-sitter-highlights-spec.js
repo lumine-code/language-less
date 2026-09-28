@@ -19,12 +19,12 @@ describe("Less Tree-sitter highlights", () => {
     await editor.getBuffer().languageMode.ready;
   }
 
-  function rawCaptures(startRow, endRow) {
-    const layer = editor.getBuffer().languageMode.rootLanguageLayer;
-    return layer.queries.highlightsQuery.captures(layer.tree.rootNode, {
+  async function rawCaptures(startRow, endRow) {
+    const groups = await editor.getGrammarQueryCaptureGroups("highlightsQuery", {
       startPosition: new Point(startRow, 0),
       endPosition: new Point(endRow, 0),
     });
+    return groups.find(({ grammar }) => grammar === editor.getGrammar())?.captures ?? [];
   }
 
   it("preserves mixin argument and parameter scopes", async () => {
@@ -55,7 +55,7 @@ a { .generated(@first, @second); }`;
     argumentsSource.push("  );", "}");
     await setUp(argumentsSource.join("\r\n"));
 
-    let captures = rawCaptures(3000, 3006);
+    let captures = await rawCaptures(3000, 3006);
     expect(captures.length).toBeLessThanOrEqual(28);
     expect(
       captures.every(
@@ -72,7 +72,7 @@ a { .generated(@first, @second); }`;
     editor.setText(parametersSource.join("\r\n"));
     await editor.getBuffer().languageMode.atTransactionEnd();
 
-    captures = rawCaptures(3000, 3006);
+    captures = await rawCaptures(3000, 3006);
     expect(captures.length).toBeLessThanOrEqual(28);
     expect(
       captures.every(
