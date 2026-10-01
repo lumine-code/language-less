@@ -48,42 +48,28 @@ describe("Less Tree-sitter grammar", () => {
     expect(scopesAt("darken")).toContain("support.function.misc.less");
   });
 
-  it("registers comment and url() injections", () => {
-    const main = require("../lib/main");
-    const hyperlinkCalls = [];
-    const todoCalls = [];
-
-    main.consumeHyperlinkInjection({
-      addInjectionPoint(scope, options) {
-        hyperlinkCalls.push({ scope, options });
-      },
-    });
-    main.consumeTodoInjection({
-      addInjectionPoint(scope, options) {
-        todoCalls.push({ scope, options });
-      },
-    });
-
-    expect(hyperlinkCalls[0]).toEqual({
-      scope: "source.css.less",
-      options: { types: ["comment", "js_comment", "string_value"] },
-    });
-    expect(todoCalls).toEqual([
-      {
-        scope: "source.css.less",
-        options: { types: ["comment", "js_comment"] },
-      },
+  it("combines static comment annotations with descendant-based url() content", async () => {
+    const fs = require("fs");
+    for (const name of ["language-hyperlink", "language-todo"]) {
+      const sibling = path.resolve(__dirname, "..", "..", name);
+      await lumine.packages.activatePackage(fs.existsSync(sibling) ? sibling : name);
+    }
+    const editor = await lumine.workspace.open();
+    editor.setGrammar(lumine.grammars.grammarForScopeName("source.css.less"));
+    editor.setText(
+      "// TODO visit https://example.com/docs\n" +
+        ".card { background: URL(https://example.com/theme.css); }\n" +
+        "// ordinary comment\n",
+    );
+    await editor.languageMode.ready;
+    await editor.languageMode.atGrammarSettlement();
+    const layers = editor.languageMode.getAllInjectionLayers();
+    expect(layers.filter((layer) => layer.grammar.scopeName === "text.todo").length).toBe(1);
+    expect(layers.filter((layer) => layer.grammar.scopeName === "text.hyperlink").length).toBe(2);
+    const urlLayer = layers.find((layer) => layer.getCurrentRanges()[0]?.start.row === 1);
+    expect(urlLayer.getCurrentRanges().map((range) => editor.getTextInBufferRange(range))).toEqual([
+      "https://example.com/theme.css",
     ]);
-
-    const urlInjection = hyperlinkCalls[1].options;
-    const call = (name) => ({
-      descendantsOfType(type) {
-        if (type === "function_name") return [{ text: name }];
-        if (type === "plain_value") return [{ text: "https://example.com/a.css" }];
-        return [];
-      },
-    });
-    expect(urlInjection.content(call("url"))).toEqual([{ text: "https://example.com/a.css" }]);
-    expect(urlInjection.content(call("darken"))).toBeNull();
+    editor.destroy();
   });
 });
