@@ -1,0 +1,16 @@
+{
+  "title": "language-less",
+  "description": "Less syntax highlighting in the editor.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "9afd24357fe7f1e95b6560905464c094c5612ede",
+  "mode": "normal",
+  "fontSettings": "default",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "Less syntax highlighting at the default editor font size.",
+      "width": 1100,
+      "height": 820
+    }
+  ]
+}

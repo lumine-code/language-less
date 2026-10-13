@@ -10,6 +10,8 @@ Fork of [pulsar-edit/pulsar](https://github.com/pulsar-edit/pulsar) (`packages/l
 - **Syntax highlighting**: highlights Less selectors, variables, mixins, values, and at-rules.
 - **Code structure**: provides folding, indentation, and symbol tags.
 
+![Less syntax highlighting at the default editor font size.](.github/demo.png)
+
 ## Installation
 
 To install `language-less` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-less`.
