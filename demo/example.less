@@ -1,0 +1,77 @@
+// A Less sample, kept idiomatic so it is worth opening in the editor.
+
+/* A block comment. */
+
+@import (reference) "mixins.less";
+
+@primary:      #cf9723;
+@background:   darken(@primary, 45%);
+@radius:       4px;
+@breakpoint-m: 48rem;
+@font-stack:   "Inter", -apple-system, sans-serif;
+
+@selector: ~".dynamic";
+
+.bordered(@width: 1px; @style: solid) {
+  border: @width @style fade(@primary, 40%);
+  border-radius: @radius;
+}
+
+.size(@w, @h: @w) {
+  width: @w;
+  height: @h;
+}
+
+:root {
+  --brand: @primary;
+}
+
+.card {
+  .bordered();
+  .size(16rem, 9rem);
+
+  background: @background url("card.png") no-repeat center / cover;
+  color: contrast(@background, black, white);
+  font: 400 1rem/1.5 @font-stack;
+  padding: (@radius * 2) @radius;
+
+  &:hover,
+  &:focus-visible {
+    border-color: @primary;
+  }
+
+  &::after {
+    content: "\2192";
+  }
+
+  .title {
+    font-weight: 600;
+
+    & when (lightness(@background) < 50%) {
+      color: lighten(@primary, 20%);
+    }
+  }
+}
+
+@{selector} {
+  opacity: 0.5;
+}
+
+@media screen and (min-width: @breakpoint-m) {
+  .card {
+    .size(24rem, 13.5rem);
+  }
+}
+
+@supports (display: grid) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: @radius;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
