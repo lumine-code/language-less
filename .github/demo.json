@@ -1,16 +1,61 @@
 {
   "title": "language-less",
-  "description": "Less syntax highlighting in the editor.",
-  "recordedOn": "2026-10-13",
-  "sourceRevision": "9afd24357fe7f1e95b6560905464c094c5612ede",
+  "description": "Less syntax highlighting at the default editor font size.",
+  "recordedOn": "2026-10-14",
+  "sourceRevision": "77812cf1c6a0a38779df81c58d0217ee673ae8fa",
+  "themeSourceRevision": "7fbd047a87ecf1367c896b19ff270cdc28d319f7",
   "mode": "normal",
   "fontSettings": "default",
+  "scenario": "demo.js",
+  "recipeHash": "f421acac88403dfede6a0b79f08bc36a411e377b67ecb1fa7117c2d9f854987b",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "devicePixelRatio": 1,
+    "locale": "en-GB",
+    "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
+    "fontSize": 14,
+    "themes": ["one-day-syntax", "one-day-ui"]
+  },
+  "viewport": { "width": 1100, "height": 820 },
+  "cornerRadius": 10,
+  "sources": {
+    "editor": {
+      "revision": "d0b1751fffac65f10a405545e5f01cf7ad05c0bb",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "package": {
+      "revision": "77812cf1c6a0a38779df81c58d0217ee673ae8fa",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "language-less": {
+      "revision": "77812cf1c6a0a38779df81c58d0217ee673ae8fa",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "one-theme": {
+      "revision": "7fbd047a87ecf1367c896b19ff270cdc28d319f7",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "example.less",
+      "sha256": "65c8a6ccb971043999dabe5b527b28193f6f4cb9d93933b261ba9e46d41db189"
+    }
+  ],
   "images": [
     {
       "file": "demo.png",
       "label": "Less syntax highlighting at the default editor font size.",
       "width": 1100,
-      "height": 820
+      "height": 820,
+      "sha256": "5336baf73ace40a5f6eaf57f65ad403646b8e7f84dccb54ac4b7d4ee15967cac"
     }
   ]
 }
