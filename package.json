@@ -15,7 +15,8 @@
     "grammars",
     "lib",
     "settings",
-    "spec"
+    "spec",
+    "THIRD_PARTY_NOTICES"
   ],
   "engines": {
     "lumine": "^1.0.0",
