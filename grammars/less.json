@@ -7,7 +7,7 @@
   "injectionNames": ["less", "less-css"],
   "treeSitter": {
     "parserSource": "github:mdovale/tree-sitter-less#02988c765d30adb0476657b5d220e8dfde1c07d3",
-    "wasmBuildTool": "tree-sitter-cli#v0.27.0",
+    "wasmBuildTool": "tree-sitter-cli#v0.27.1",
     "grammar": "less.wasm",
     "highlightsQuery": "less-highlights.scm",
     "foldsQuery": "less-folds.scm",
