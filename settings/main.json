@@ -18,7 +18,11 @@
       "commentDelimiters": {
         "line": "//",
         "block": ["/*", "*/"]
-      }
+      },
+      "nonWordCharacters": "/\\()\"':,.;<>~!#$%^&*|+=[]{}`?…"
+    },
+    "bracket-matcher": {
+      "autocompleteCharacters": ["()", "[]", "{}", "\"\"", "''", "``"]
     }
   },
   ".source.css.less .meta.property-value": {

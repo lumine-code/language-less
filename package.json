@@ -42,6 +42,7 @@
   },
   "specPackages": [
     "language-hyperlink",
-    "language-todo"
+    "language-todo",
+    "bracket-matcher"
   ]
 }
