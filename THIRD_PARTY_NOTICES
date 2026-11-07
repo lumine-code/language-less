@@ -84,6 +84,9 @@ THE SOFTWARE.
 Source: https://github.com/mdovale/tree-sitter-less
 Revision: 02988c765d30adb0476657b5d220e8dfde1c07d3
 
+Parser source: github:mdovale/tree-sitter-less#02988c765d30adb0476657b5d220e8dfde1c07d3
+Resolved commit: 02988c765d30adb0476657b5d220e8dfde1c07d3
+
 Original file: LICENSE.md
 
 The MIT License (MIT)
